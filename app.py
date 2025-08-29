@@ -16,7 +16,7 @@ Session(app)
 db = SQL("sqlite:///weather.db")
 
 # OpenWeather API Key
-API_KEY = "59d57348335a0c39ca6ad41c217a4a51" 
+API_KEY = "your_api_key" 
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -111,3 +111,4 @@ def logout():
     session.clear()
     flash("Logged out")
     return redirect("/")
+
