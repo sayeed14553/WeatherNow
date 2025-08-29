@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="search-card">
+  <h1 class="title">Search a city</h1>
+
+  <form method="post" class="search-form" autocomplete="off">
+    <input name="city" class="search-input" placeholder="e.g. Dhaka, Tokyo, New York" required autofocus>
+    <button class="search-btn" type="submit">Search</button>
+  </form>
+
+  {% if weather %}
+  <div class="result">
+    <div class="result-left">
+      <img class="weather-icon" src="http://openweathermap.org/img/wn/{{ weather.icon }}@4x.png" alt="icon">
+    </div>
+    <div class="result-right">
+      <h2 class="city">{{ weather.city }}, {{ weather.country }}</h2>
+      <div class="temp">{{ weather.temp }}°C</div>
+      <div class="desc">{{ weather.description }}</div>
+      <div class="meta">
+        <span>💧 {{ weather.humidity }}%</span>
+        <span>🌬 {{ weather.wind }} m/s</span>
+      </div>
+      {% if session.get('user_id') %}
+        <div class="saved-note">Saved to your history ✅</div>
+      {% else %}
+        <div class="saved-note">Login to save searches 📌</div>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+{% endblock %}

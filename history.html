@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>📖 Your Search History</h1>
+
+{% if rows %}
+    <table>
+        <tr>
+            <th>City</th>
+            <th>Time</th>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>{{ row.city }}</td>
+            <td>{{ row.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No history found.</p>
+{% endif %}
+{% endblock %}
